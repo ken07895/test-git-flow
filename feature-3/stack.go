@@ -37,3 +37,12 @@ func (s Stack) Peek() (int, error) {
 func (s *Stack) Size() int {
 	return s.size
 }
+
+func (s Stack) Search(val int) int {
+	for idx_searching, item := range s.items {
+		if val == item {
+			return idx_searching
+		}
+	}
+	return -1
+}
