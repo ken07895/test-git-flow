@@ -29,3 +29,13 @@ func AppendList(head *LinkedList, val int) *LinkedList {
 	cur.Next = &LinkedList{Val: val}
 	return head
 }
+
+func FindingMidList(head *LinkedList) *LinkedList {
+	slow := head
+	fast := head
+	for fast != nil && fast.Next != nil {
+		fast = fast.Next.Next
+		slow = slow.Next
+	}
+	return slow
+}
