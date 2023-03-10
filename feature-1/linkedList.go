@@ -11,7 +11,8 @@ func NewHead(Val int) *LinkedList {
 }
 
 func Search(l *LinkedList, searchingVal int) *LinkedList {
-	for l != nil {
+	l = l.Next
+	for l.Next != nil {
 		if l.Val == searchingVal {
 			return l
 		}
