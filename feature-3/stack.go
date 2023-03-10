@@ -7,6 +7,7 @@ type Stack struct {
 	size  int
 }
 
+// add comment
 func Construct(maxSize int) Stack {
 	items := make([]int, 0, maxSize)
 	return Stack{items, 0}
