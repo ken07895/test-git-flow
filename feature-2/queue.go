@@ -33,3 +33,12 @@ func (q *Queue) Peek() (int, error) {
 	}
 	return q.items[0], nil
 }
+
+func (q *Queue) Search(val int) int {
+	for idx_searching, searchingVal := range q.items {
+		if val == searchingVal {
+			return idx_searching
+		}
+	}
+	return -1
+}
