@@ -2,6 +2,7 @@ package feature_2
 
 import "errors"
 
+// add comment
 type Queue struct {
 	items []int
 	size  int
