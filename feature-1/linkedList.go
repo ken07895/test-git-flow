@@ -30,6 +30,7 @@ func AppendList(head *LinkedList, val int) *LinkedList {
 	return head
 }
 
+// add comment
 func FindingMidList(head *LinkedList) *LinkedList {
 	slow := head
 	fast := head
