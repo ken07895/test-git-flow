@@ -43,3 +43,9 @@ func (q *Queue) Search(val int) int {
 	}
 	return -1
 }
+
+func (q *Queue) Enqueues(items []int) {
+	for i := 0; i < len(items); i++ {
+		q.Enqueue(items[i])
+	}
+}
