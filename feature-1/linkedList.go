@@ -21,13 +21,12 @@ func Search(l *LinkedList, searchingVal int) *LinkedList {
 	return nil
 }
 
-func AppendList(head *LinkedList, val int) *LinkedList {
+func AppendList(head *LinkedList, val int) {
 	cur := head
 	for cur.Next != nil {
 		cur = cur.Next
 	}
 	cur.Next = &LinkedList{Val: val}
-	return head
 }
 
 // add comment
@@ -39,4 +38,15 @@ func FindingMidList(head *LinkedList) *LinkedList {
 		slow = slow.Next
 	}
 	return slow
+}
+
+func AppendLists(head *LinkedList, vals []int) {
+	cur := head
+	for cur.Next != nil {
+		cur = cur.Next
+	}
+	for _, val := range vals {
+		cur.Next = &LinkedList{Val: val}
+		cur = cur.Next
+	}
 }
