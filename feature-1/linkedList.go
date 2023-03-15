@@ -40,3 +40,5 @@ func FindingMidList(head *LinkedList) *LinkedList {
 	}
 	return slow
 }
+
+//
