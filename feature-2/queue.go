@@ -1,6 +1,9 @@
 package feature_2
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // add comment
 type Queue struct {
@@ -42,4 +45,8 @@ func (q *Queue) Search(val int) int {
 		}
 	}
 	return -1
+}
+
+func (q *Queue) PrintItems() {
+	fmt.Println(q.items)
 }
