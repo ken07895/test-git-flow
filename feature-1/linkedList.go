@@ -9,6 +9,7 @@ type LinkedList struct {
 
 func NewHead(Val int) *LinkedList {
 	head := LinkedList{Val: Val}
+	fmt.Println("test mond 3")
 	return &head
 }
 
