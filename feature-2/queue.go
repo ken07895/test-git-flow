@@ -19,7 +19,6 @@ func Construct(maxSize int) Queue {
 func (q *Queue) Enqueue(item int) {
 	q.items = append(q.items, item)
 	q.size++
-	fmt.Println("mond 1")
 }
 
 func (q *Queue) Dequeue() (int, error) {
@@ -29,7 +28,6 @@ func (q *Queue) Dequeue() (int, error) {
 	item := q.items[0]
 	q.items = q.items[1:]
 	q.size--
-	fmt.Println("mond 2")
 	return item, nil
 }
 
@@ -51,11 +49,4 @@ func (q *Queue) Search(val int) int {
 
 func (q *Queue) PrintItems() {
 	fmt.Println(q.items)
-}
-
-func (q Queue) Test() {
-	fmt.Println("comment 1")
-	fmt.Println("comment 2")
-	fmt.Println("comment 5")
-	fmt.Println("mond 4")
 }
