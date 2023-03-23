@@ -55,7 +55,7 @@ func (q *Queue) PrintItems() {
 
 func (q *Queue) PrintItem(idx int) {
 	if idx >= q.size {
-		fmt.Println("failed")
+		fmt.Println("failed test")
 	}
 	fmt.Println(q.items[idx])
 }
