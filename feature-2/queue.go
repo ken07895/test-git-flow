@@ -21,6 +21,7 @@ func (q *Queue) Enqueue(item int) {
 	q.size++
 	fmt.Println("mond 1")
 	fmt.Println("mond 2")
+	fmt.Println("Kai you")
 }
 
 func (q *Queue) Dequeue() (int, error) {
