@@ -1,6 +1,9 @@
 package feature_2
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // add comment
 type Queue struct {
@@ -36,10 +39,14 @@ func (q *Queue) Peek() (int, error) {
 }
 
 func (q *Queue) Search(val int) int {
-	for idx_searching, searchingVal := range q.items {
+	for idx_searchingConflict, searchingVal := range q.items {
 		if val == searchingVal {
-			return idx_searching
+			return idx_searchingConflict
 		}
 	}
 	return -1
+}
+
+func (q *Queue) PrintItems() {
+	fmt.Println(q.items)
 }
