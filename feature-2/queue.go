@@ -53,6 +53,13 @@ func (q *Queue) PrintItems() {
 	fmt.Println(q.items)
 }
 
+func (q *Queue) PrintItem(idx int) {
+	if idx >= q.size {
+		fmt.Println("failed")
+	}
+	fmt.Println(q.items[idx])
+}
+
 func (q Queue) Test() {
 	fmt.Println("comment 1")
 	fmt.Println("comment 2")
