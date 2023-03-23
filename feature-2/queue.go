@@ -20,6 +20,7 @@ func (q *Queue) Enqueue(item int) {
 	q.items = append(q.items, item)
 	q.size++
 	fmt.Println("mond 1")
+	fmt.Println("mond 2")
 }
 
 func (q *Queue) Dequeue() (int, error) {
