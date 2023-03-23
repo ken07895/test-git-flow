@@ -1,5 +1,7 @@
 package feature_1
 
+import "fmt"
+
 type LinkedList struct {
 	Val  int
 	Next *LinkedList
@@ -39,4 +41,12 @@ func FindingMidList(head *LinkedList) *LinkedList {
 		slow = slow.Next
 	}
 	return slow
+}
+
+func ShowAllValues(head *LinkedList) {
+	for head != nil {
+		fmt.Println(head.Val)
+		head = head.Next
+	}
+	fmt.Println("eiei za")
 }
