@@ -51,6 +51,7 @@ func (q *Queue) Search(val int) int {
 			return idx_searchingConflict
 		}
 	}
+	fmt.Println("mond 2")
 	return -1
 }
 
