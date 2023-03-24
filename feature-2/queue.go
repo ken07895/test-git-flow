@@ -39,6 +39,7 @@ func (q *Queue) Peek() (int, error) {
 	if q.size == 0 {
 		return -1, errors.New("empty queue")
 	}
+	fmt.Println("Kai you")
 	return q.items[0], nil
 }
 
