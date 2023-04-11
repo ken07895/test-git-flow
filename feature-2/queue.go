@@ -23,6 +23,7 @@ func (q *Queue) Enqueue(item int) {
 	fmt.Println("mond 2")
 	fmt.Println("Kai you")
 	fmt.Println("branch 1")
+	fmt.Println("branch 1 1")
 }
 
 func (q *Queue) Dequeue() (int, error) {
@@ -40,6 +41,7 @@ func (q *Queue) Peek() (int, error) {
 	if q.size == 0 {
 		return -1, errors.New("empty queue")
 	}
+	fmt.Println("Kai you")
 	return q.items[0], nil
 }
 
@@ -49,6 +51,7 @@ func (q *Queue) Search(val int) int {
 			return idx_searchingConflict
 		}
 	}
+	fmt.Println("mond 2")
 	return -1
 }
 
