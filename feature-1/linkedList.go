@@ -42,6 +42,7 @@ func FindingMidList(head *LinkedList) *LinkedList {
 		slow = slow.Next
 	}
 	fmt.Println(slow.Val)
+	fmt.Println(fast.Val)
 	return slow
 }
 
