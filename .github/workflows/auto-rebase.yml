@@ -18,6 +18,8 @@ jobs:
       - name: Get branch names
         id: branch-names
         run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@users.noreply.github.com"
           branch_names=$(git branch -r --format='%(refname:short)' | sed 's/origin\///g')
           echo "::set-output name=branches::$branch_names"
 
@@ -36,7 +38,7 @@ jobs:
               else
                 echo "Conflict occurred: $target_branch"
                 git rebase --abort
-                git reset --hard HEAD
+                git reset --hard origin/$target_branch
               fi
             fi
           done
