@@ -37,7 +37,8 @@ jobs:
                 echo "Rebase successful: $target_branch"
               else
                 echo "Conflict occurred: $target_branch"
-                git rebase --abort
+                git merge --abort
+                # git rebase --abort
                 git reset --hard origin/$target_branch
               fi
             fi
