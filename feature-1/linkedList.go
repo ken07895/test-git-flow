@@ -9,6 +9,7 @@ type LinkedList struct {
 
 func NewHead(Val int) *LinkedList {
 	head := LinkedList{Val: Val}
+	fmt.Println("test mond 3")
 	return &head
 }
 
@@ -40,6 +41,7 @@ func FindingMidList(head *LinkedList) *LinkedList {
 		fast = fast.Next.Next
 		slow = slow.Next
 	}
+	fmt.Println(slow.Val)
 	return slow
 }
 
