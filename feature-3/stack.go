@@ -29,6 +29,13 @@ func (s *Stack) Pop() (int, error) {
 	return item, nil
 }
 
+func (s Stack) Peek() (int, error) {
+	if s.size == 0 {
+		return -1, errors.New("stack are empty")
+	}
+	return s.items[len(s.items)-1], nil
+}
+
 func (s *Stack) Size() int {
 	return s.size
 }
