@@ -30,7 +30,7 @@ jobs:
       - name: Fetch and update repository
         run: git fetch origin && git checkout master && git pull origin master
 
-      - name: Merge to Master
+      - name: Rebase to master
         if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
         run: |
           echo "START git action auto rebase"
@@ -51,6 +51,7 @@ jobs:
               fi
             fi
           done
+          echo "::warning file=app.py,line=10,col=5::Code formatting issues detected"
           echo "FINISH git action auto rebase"
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
