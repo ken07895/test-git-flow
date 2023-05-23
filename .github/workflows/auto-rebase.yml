@@ -32,7 +32,7 @@ jobs:
             if [ "$target_branch" != "master" ] && [ "$target_branch" != "HEAD" ]; then
               git checkout $target_branch
               # if git merge --no-ff master ; then
-              if git rebase master; then
+              if git rebase origin/master; then
                 git push origin/$target_branch
                 echo "Rebase successful: $target_branch"
               else
