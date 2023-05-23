@@ -30,6 +30,7 @@ jobs:
         if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
         run: |
           echo "START git action auto rebase"
+          git log --all --graph
           git reset --hard HEAD
           git checkout master
           git checkout develop
