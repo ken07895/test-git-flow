@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -25,20 +25,17 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@users.noreply.github.com"
           branch_names=$(git branch -r --format='%(refname:short)' | sed 's/origin\///g')
-          echo "::set-output name=branches::$branch_names"
-          
-      - name: Fetch and update repository
-        run: git fetch origin && git checkout master && git pull origin master
+          echo "{name}=branches::$branch_names" >> $GITHUB_OUTPUT
 
       - name: Rebase to master
         if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
         run: |
           echo "START git action auto rebase"
           for target_branch in $(git branch -r --format='%(refname:short)' | sed 's/origin\///g'); do
-            echo "target branch : "$target_branch
+            echo "rebase master target branch: $target_branch"
             if [ "$target_branch" != "master" ] && [ "$target_branch" != "HEAD" ]; then
               git checkout $target_branch
-              echo "Check out branch :"$target_branch
+              echo "Check out branch: $target_branch"
               # if git merge --no-ff master ; then
               if git rebase origin/master; then
                 git push --force origin $target_branch
@@ -51,6 +48,8 @@ jobs:
               fi
             fi
           done
+          work=$(pwd)
+          echo "$work"
           echo "::warning file=app.py,line=10,col=5::Code formatting issues detected"
           echo "FINISH git action auto rebase"
         env:
