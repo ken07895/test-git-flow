@@ -44,6 +44,10 @@ func (s *Stack) IsValid() (bool, error) {
 	return len(s.items) != 0, nil
 }
 
+func (s *Stack) Zero() {
+	s.items = []int{}
+}
+
 func (s Stack) Search(val int) int {
 	for idx_searching, item := range s.items {
 		if val == item {
