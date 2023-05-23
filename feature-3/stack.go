@@ -13,6 +13,7 @@ func Construct(maxSize int) Stack {
 	return Stack{items, 0}
 }
 
+// add comment
 func (s *Stack) Push(val int) {
 	s.items = append(s.items, val)
 	s.size++
