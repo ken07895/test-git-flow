@@ -45,11 +45,10 @@ jobs:
                 # git merge --abort
                 git rebase --abort
                 git reset --hard origin/$target_branch
+                echo "$target_branch" >> conflict_file.tmp
               fi
             fi
           done
-          work=$(pwd)
-          echo "$work"
           echo "::warning file=app.py,line=10,col=5::Code formatting issues detected"
           echo "FINISH git action auto rebase"
         env:
@@ -57,4 +56,6 @@ jobs:
       
       - name: Check conflict branch
         run: |
-          echo "$work"
+          echo "START check conflict branch"
+          cat ./conflict_file.tmp
+          echo "FINISH check conflict branch"
