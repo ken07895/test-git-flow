@@ -32,12 +32,23 @@ jobs:
         if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
         run: |
           echo "START git action auto rebase"
-          git log --all --graph
-          git reset --hard HEAD
-          git checkout master
-          git checkout develop
-          git reset --hard HEAD
-          git rebase master
+          for target_branch in $(git branch -r --format='%(refname:short)' | sed 's/origin\///g'); do
+            echo "target branch : "$target_branch
+            if [ "$target_branch" != "master" ] && [ "$target_branch" != "HEAD" ]; then
+              git checkout $target_branch
+              echo "Check out branch :"$target_branch
+              # if git merge --no-ff master ; then
+              if git rebase origin/master; then
+                git push --force origin $target_branch
+                echo "Rebase successful: $target_branch"
+              else
+                echo "Conflict occurred: $target_branch"
+                # git merge --abort
+                git rebase --abort
+                git reset --hard origin/$target_branch
+              fi
+            fi
+          done
           echo "FINISH git action auto rebase"
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
