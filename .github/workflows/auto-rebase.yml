@@ -25,7 +25,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@users.noreply.github.com"
           branch_names=$(git branch -r --format='%(refname:short)' | sed 's/origin\///g')
-          echo "{name}=branches::$branch_names" >> $GITHUB_OUTPUT
+          echo "$branch_names"
 
       - name: Rebase to master
         if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
