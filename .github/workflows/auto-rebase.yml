@@ -49,7 +49,6 @@ jobs:
               fi
             fi
           done
-          echo "::warning file=app.py,line=10,col=5::Code formatting issues detected"
           echo "FINISH git action auto rebase"
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
@@ -57,5 +56,7 @@ jobs:
       - name: Check conflict branch
         run: |
           echo "START check conflict branch"
-          cat ./conflict_file.tmp
+          if [ -f "./conflict_file.tmp" ]; then
+              echo -"$(::warning:: cat ./conflict_file.tmp | tr '\n' ',')"
+          fi
           echo "FINISH check conflict branch"
