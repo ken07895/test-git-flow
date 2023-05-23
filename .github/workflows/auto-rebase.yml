@@ -54,3 +54,7 @@ jobs:
           echo "FINISH git action auto rebase"
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      
+      - name: Check conflict branch
+        run: |
+          echo "$work"
