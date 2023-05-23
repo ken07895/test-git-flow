@@ -31,13 +31,13 @@ jobs:
         run: |
           echo "START git action auto rebase"
           for target_branch in $(git branch -r --format='%(refname:short)' | sed 's/origin\///g'); do
-            echo "target branch :"$target_branch
+            echo "target branch : "$target_branch
             if [ "$target_branch" != "master" ] && [ "$target_branch" != "HEAD" ]; then
               git checkout $target_branch
               echo "Check out branch :"$target_branch
               # if git merge --no-ff master ; then
               if git rebase origin/master; then
-                git push origin/$target_branch
+                git push --force origin $target_branch
                 echo "Rebase successful: $target_branch"
               else
                 echo "Conflict occurred: $target_branch"
