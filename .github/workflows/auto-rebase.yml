@@ -57,7 +57,7 @@ jobs:
         run: |
           echo "START check conflict branch"
           if [ -f "./conflict_file.tmp" ]; then
-              with open("myfile.txt", "r") as f:
+              with open("./conflict_file.tmp", "r") as f:
                 for line in f:
                   echo "::warning ::$line"
               exit 1
