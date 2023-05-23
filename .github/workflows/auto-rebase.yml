@@ -44,3 +44,5 @@ jobs:
             fi
           done
           echo "FINISH git action auto rebase"
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
