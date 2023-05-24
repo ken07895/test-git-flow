@@ -58,7 +58,7 @@ jobs:
           echo "START check conflict branch"
           if [ -f "./conflict_file.tmp" ]; then
               while read line; do
-                echo "::warning ::$line"
+                echo "::warning file=Conflict::Rebase master has conflict on branch: $line"
               done < ./conflict_file.tmp
               
               echo "ERROR conflict branch"
