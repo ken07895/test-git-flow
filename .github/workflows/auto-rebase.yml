@@ -60,8 +60,8 @@ jobs:
               while read line; do
                 echo "::warning file=Conflict::Rebase master has conflict on branch: $line"
               done < ./conflict_file.tmp
-              
               echo "ERROR conflict branch"
+              rm conflict_file.tmp
               exit 1
           fi
           echo "FINISH check conflict branch"
