@@ -33,7 +33,7 @@ jobs:
           echo "START git action auto rebase"
           for target_branch in $(git branch -r --format='%(refname:short)' | sed 's/origin\///g'); do
             echo "rebase master target branch: $target_branch"
-            if [ "$target_branch" != "master" ] && [ "$target_branch" != "HEAD" ] && [[ ! "$target_branch" =~ ^feature/.*$ ]]; then
+            if [ "$target_branch" != "master" ] && [ "$target_branch" != "HEAD" ] && [[ ! "$target_branch" =~ ^temp/.*$ ]] && [[ ! "$target_branch" =~ ^archive/.*$ ]]; then
               git checkout $target_branch
               echo "Check out branch: $target_branch"
               # if git merge --no-ff master ; then
