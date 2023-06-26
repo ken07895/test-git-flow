@@ -29,12 +29,12 @@ jobs:
         run: |
           echo "START git action auto rebase"
           for target_branch in $(git branch -r --format='%(refname:short)' | sed 's/origin\///g'); do
-            echo "rebase master target branch: $target_branch"
+            echo "rebase develop target branch: $target_branch"
             if [[ "$target_branch" =~ ^(feature/.*|fix-bug/.*)$ ]]; then
               git checkout $target_branch
               echo "Check out branch: $target_branch"
-              # if git merge --no-ff master ; then
-              if git rebase origin/master; then
+              # if git merge --no-ff develop ; then
+              if git rebase origin/develop; then
                 git push --force origin $target_branch
                 echo "Rebase successful: $target_branch"
               else
@@ -55,7 +55,7 @@ jobs:
           echo "START check conflict branch"
           if [ -f "./conflict_file.tmp" ]; then
               while read line; do
-                echo "::warning file=Conflict::Rebase master has conflict on branch: $line"
+                echo "::warning file=Conflict::Rebase develop has conflict on branch: $line"
               done < ./conflict_file.tmp
               echo "ERROR conflict branch"
               rm conflict_file.tmp
